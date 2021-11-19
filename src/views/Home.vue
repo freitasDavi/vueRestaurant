@@ -1,13 +1,18 @@
 <template>
+  <Banner />
   <div class="main_container">
-    <h1>Home</h1>
+    <h1>Monte o seu burger</h1>
+    <p>formulário</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Banner from '../components/Banner';
 
 export default {
   name: 'Home',
+  components: {
+    Banner
+  }
 }
 </script>
