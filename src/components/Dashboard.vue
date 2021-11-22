@@ -10,33 +10,14 @@
         <div>Ações: </div>
       </div>
       <div id="burger_table_rows">
-        <div class="burger_table_row">
-          <div class="order_number">1</div>
-          <div>João</div>
-          <div>Pão de trigo</div>
-          <div>Maminha</div>
+        <div class="burger_table_row" v-for="burger in burgers" :key="burger.id">
+          <div class="order_number">{{burger.id}}</div>
+          <div>{{ burger.nome }}</div>
+          <div>{{ burger.pao }}</div>
+          <div>{{ burger.carne}}</div>
           <div>
             <ul>
-              <li>Salame</li>
-              <li>Tomate</li>
-            </ul>
-          </div>
-          <div>
-            <select name="status" class="status">
-              <option value="">Selecione</option>
-            </select>
-            <button class="delete_btn">Cancelar</button>
-          </div>
-        </div>
-        <div class="burger_table_row">
-          <div class="order_number">1</div>
-          <div>João</div>
-          <div>Pão de trigo</div>
-          <div>Maminha</div>
-          <div>
-            <ul>
-              <li>Salame</li>
-              <li>Tomate</li>
+              <li v-for="(opcional, index) in burger.opcionais" :key="index">{{opcional}}</li>
             </ul>
           </div>
           <div>
@@ -53,7 +34,29 @@
 
 <script>
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  data () {
+    return {
+      burgers: null,
+      burger_id: null,
+      status: []
+    }
+  },
+  methods: {
+    async getPedidos() {
+      const req = await fetch("http://localhost:3000/burgers");
+
+      const data = await req.json();
+
+      this.burgers = data;
+
+      console.log(this.burgers);
+      // recuperar os status
+    }
+  },
+  mounted() {
+    this.getPedidos();
+  }
 }
 </script>
 
@@ -114,22 +117,5 @@ export default {
     background-color: transparent;
     color: #222222;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </style>
