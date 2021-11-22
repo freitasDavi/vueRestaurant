@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Componente de mensagem</p>
+    <Message :msg="msg" v-show="msg" />
     <div>
       <form id="burger_form" @submit="createBurger">
         <div class="input_container">
@@ -37,8 +37,11 @@
 </template>
 
 <script>
+import Message from "@/components/Message";
+
 export default {
   name: "BurgerForm",
+  components: {Message},
   data () {
     return {
       paes: null,
@@ -78,11 +81,17 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "body": dataJson
-        }
+        },
+        body: dataJson
       });
 
       const res = await req.json();
+
+      this.msg = `Pedido nº ${res.id} realizado com sucesso`
+
+      setTimeout(() => {
+        this.msg = ""
+      }, [3000]);
 
       this.nome = "";
       this.carne = "";

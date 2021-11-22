@@ -79,7 +79,38 @@
   ],
   "burgers": [
     {
+      "nome": "Davi",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado",
       "id": 1
+    },
+    {
+      "nome": "Aee",
+      "carne": "Picanha",
+      "pao": "Parmesão e Orégano",
+      "opcionais": [
+        "Cheddar",
+        "Tomate",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado",
+      "id": 2
+    },
+    {
+      "nome": "Ferick",
+      "carne": "Veggie burger",
+      "pao": "Integral",
+      "opcionais": [
+        "Tomate",
+        "Pepino",
+        "Cebola roxa"
+      ],
+      "status": "Solicitado",
+      "id": 3
     }
   ]
 }
